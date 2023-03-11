@@ -7,6 +7,7 @@ const app = express();
 // connect rest of ultilites to main server file
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const helpers = require('./utils/helpers');
 
 let port = process.env.PORT;
 if (port == null || port == "") {
@@ -25,13 +26,15 @@ const sess = {
       db: sequelize,
     }),
   };
+app.use(session(sess));
 
+const hbs = hndlbrs.create({});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(`${__dirname}/public`));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
