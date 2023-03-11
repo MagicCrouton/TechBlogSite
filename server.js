@@ -28,7 +28,7 @@ const sess = {
   };
 app.use(session(sess));
 
-const hbs = hndlbrs.create({});
+const hbs = hndlbrs.create({helpers});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
