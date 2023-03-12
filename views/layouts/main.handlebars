@@ -17,21 +17,22 @@
     </button>
                 <div class="dropdown pb-4 d-flex">
                     <a href="#" class="d-flex text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span>Session Options</span>
                     {{#if loggedIn}}
+                    <span>Sign Out</span>
                     {{!-- add user info here     --}}
                     <a></a>
                         <span class="d-none d-sm-inline mx-1">{{userName.user_name}}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" href="#">New Blog</a></li>
-                        <li><a class="dropdown-item" href="#">Your Blogs</a></li>
+                        {{!-- <li><a class="dropdown-item" href="/api/users/dashboard">New Blog</a></li>
+                        <li><a class="dropdown-item" href="/api/users/dashboard">Your Blogs</a></li>
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
-                        <li><a id="signOutBtn" class="dropdown-item" href="#">Sign out</a></li>
+                        </li> --}}
+                        <li><a id="signOutBtn" class="dropdown-item" href="#">are you sure?</a></li>
                         <script src="/logout.js"></script>
                     {{else}}
+                    <span>Sign in</span>
                     <a>
                         <span class="d-none d-sm-inline mx-1">All things TECH</span>
                     </a>
@@ -61,7 +62,7 @@
                     </li>
                     {{#if loggedIn}}
                     <li class="nav-item">
-                        <a href="" class="nav-link align-middle px-0">
+                        <a href="/api/users/dashboard" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                         </a>
                     </li>                   

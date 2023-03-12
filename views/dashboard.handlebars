@@ -1,0 +1,75 @@
+<h3>Your Blogs</h3>
+<hr>
+<div class="table-responsive">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Blog ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Last Updated at</th>
+        <th scope="col">click to edit</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{!-- iterate through users blogs here --}}
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>Project Manager</td>
+        <td><button type="button">edit</button></td>
+      </tr>
+       {{!-- end iterations --}}
+    </tbody>
+  </table>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Create New Blog</h5>
+
+            <div class="card-footer py-3 border-3" style="background-color: #f8f9fa;">
+            <div class="d-flex flex-column w-100">
+              <div class="form-outline w-100">
+                <textarea class="form-control" id="newBlogTitle" rows="1"
+                  style="background: #fff;"></textarea>
+                <label class="form-label" for="textAreaExample">title</label>
+              </div>
+              <div class="form-outline w-100">
+                <textarea class="form-control" id="newBlogBody" rows="6"
+                  style="background: #fff;"></textarea>
+                <label class="form-label" for="textAreaExample">body</label>
+              </div>
+            </div>
+          </div>
+        <button class="btn btn-primary" id="postNew">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Invoice #184389</h5>
+        <p class="card-text">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+        <a href="#" class="btn btn-primary">Print</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Invoice #184391</h5>
+        <p class="card-text">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+        <a href="#" class="btn btn-primary">Print</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/dashboard.js"></script>

@@ -2,12 +2,12 @@ const router = require('express').Router();
 const { user } = require('../../models');
 
 router.get('/loginPage' , async (req, res) => {
-    console.log('i got here')
+    // console.log('i got here')
     res.render('login')
 })
 
 router.get('/' , async (req, res) => {
-  console.log('i got here')
+  // console.log('i got here')
   res.render('signup')
 })
 // CREATE new user
@@ -73,7 +73,6 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
-  console.log(req.session)
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -82,5 +81,17 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+router.get('/dashboard', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('dashboard', {
+      loggedIn: req.session.loggedIn,
+      userName: req.session.user
+    })
+  }
+  else {
+    res.render('login')
+  }
+})
 
 module.exports = router;
