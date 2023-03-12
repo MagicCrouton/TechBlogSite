@@ -10,6 +10,23 @@ const { user, blog, comment } = require('../../models');
 
 // })
 
+router.post('/newComment', async (req, res) => {
+    await comment.create({
+        user_id: req.session.user.user_id,
+        blog_id: req.body.blog_id,
+        comment_body: req.body.blog_body
+    })
+    .then(()=> {
+        res.render('dashboard', {
+            loggedIn: res.session.loggedIn,
+            userName: res.session.user
+        })
+    })
+    .catch((err)=> {
+        res.json(err)
+    })
+    });
+
 router.post('/newBlog', async (req, res) => {
     await blog.create({
         user_id: req.session.user.user_id,
@@ -26,5 +43,7 @@ router.post('/newBlog', async (req, res) => {
         res.json(err)
     })
     });
+
+
 
 module.exports= router

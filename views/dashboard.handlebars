@@ -8,18 +8,20 @@
         <th scope="col">Title</th>
         <th scope="col">Created at</th>
         <th scope="col">Last Updated at</th>
-        <th scope="col">click to edit</th>
       </tr>
     </thead>
     <tbody>
         {{!-- iterate through users blogs here --}}
+    {{#if loggedIn}}
+    {{#each data as |blog|}}
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>Project Manager</td>
-        <td><button type="button">edit</button></td>
+        <th scope="row">{{blog.dataValues.blog_id}}</th>
+        <td>{{blog.dataValues.blog_title}}</td>
+        <td>{{blog.dataValues.createdAt}}</td>
+        <td>{{blog.dataValues.updatedAt}}</td>
       </tr>
+      {{/each}}
+      {{/if}}
        {{!-- end iterations --}}
     </tbody>
   </table>

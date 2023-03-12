@@ -25,6 +25,12 @@ blog.hasMany(comment, {
     foreignKey: 'blog_id'
 })
 
+// i'm not sure if this will work
+comment.belongsTo(comment, {
+    foreignKey: 'parentComment_id'
+})
+
+
 module.exports = {
     user,
     blog,

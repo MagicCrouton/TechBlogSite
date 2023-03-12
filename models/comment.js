@@ -19,6 +19,10 @@ comment.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    parentComment_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     comment_body: {
         type: DataTypes.STRING,
         allowNull: false,
