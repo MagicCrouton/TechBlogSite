@@ -1,6 +1,15 @@
 const router = require('express').Router();
 const { user } = require('../../models');
 
+router.get('/loginPage' , async (req, res) => {
+    console.log('i got here')
+    res.render('login')
+})
+
+router.get('/' , async (req, res) => {
+  console.log('i got here')
+  res.render('signup')
+})
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
