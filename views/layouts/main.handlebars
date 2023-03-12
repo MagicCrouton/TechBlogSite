@@ -17,8 +17,7 @@
     </button>
                 <div class="dropdown pb-4 d-flex">
                     <a href="#" class="d-flex text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://images.idgesg.net/images/article/2019/05/cso_best_security_software_best_ideas_best_technology_lightbulb_on_horizon_of_circuit_board_landscape_with_abstract_digital_connective_technology_atmosphere_ideas_innovation_creativity_by_peshkov_gettyimages-965785212_3x2_2400x1600-100797318-large.jpg?auto=webp&quality=85,70" 
-                        alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span>Session Options</span>
                     {{#if loggedIn}}
                     {{!-- add user info here     --}}
                     <a></a>
@@ -66,22 +65,12 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                         </a>
                     </li>                   
-                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Logout</span>
-                        </a>
-                    </li> 
                     {{else}}
                     <li class="nav-item">
                         <a href="/api/users/loginPage" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                         </a>
                     </li>                   
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span id="signInBtn" class="ms-1 d-none d-sm-inline">Login</span>
-                        </a>
-                    </li>
                     {{/if}}              
                 </ul>
             </div>
