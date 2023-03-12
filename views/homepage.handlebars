@@ -1,10 +1,9 @@
 {{#each data as |blog|}}
 <div class="card">
-  <h5 class="card-header">{{blog.dataValues.blog_id}}</h5>
-  <h5 class="card-header">{{blog.dataValues.user.user_name}}</h5>
+  <h5 class="card-header">{{blog.dataValues.blog_title}}</h5>
   <div class="card-body">
-    <h5 class="card-title">{{blog.dataValues.blog_title}}</h5>
     <p class="card-text">{{blog.dataValues.blog_body}}</p>
+    <p>last updated by {{blog.dataValues.user.dataValues.user_name}} on {{blog.dataValues.updatedAt}}</p>
   </div>
 </div>
 {{/each}}
