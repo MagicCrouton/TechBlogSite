@@ -8,8 +8,10 @@ const signupFormHandler = async (event) => {
     const password = document.querySelector('#password').value.trim();
     const passwordRepeat = document.querySelector('#password2').value.trim();
 
-  
-    if (username && email && password && password === passwordRepeat) {
+    if (!(password === passwordRepeat)) {
+      alert("passwords don't match")
+    }
+    else if (username && email && password && password === passwordRepeat) {
       const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ username, email, password }),
@@ -21,9 +23,6 @@ const signupFormHandler = async (event) => {
       } else {
         alert('Failed to sign up.');
       }
-    }
-    else if (!password === passwordRepeat) {
-      alert('passwords do not match')
     }
   };
 
