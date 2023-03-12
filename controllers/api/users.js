@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
     });
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user = dbUserData;
       res.redirect('/')
     });
   } catch (err) {
@@ -55,10 +56,14 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-
+      req.session.user = dbUserData;
       res
         .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
+        .redirect('/')
+        // .render('homepage',{
+        // loggedIn: req.session.loggedIn,
+        // user_name: req.session.user.dataValues.user_name
+        // })
     });
   } catch (err) {
     console.log(err);
@@ -68,6 +73,7 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
+  console.log(req.session)
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
