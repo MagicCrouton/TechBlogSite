@@ -38,14 +38,13 @@
           <div class="card-footer py-3 border-3" style="background-color: #f8f9fa;">
             <div class="d-flex flex-start w-100">
               <div class="form-outline w-100">
-                <textarea class="form-control" id="textAreaExample" rows="1"
+                <textarea class="form-control" id="textArea{{blog.dataValues.blog_id}}" rows="1"
                   style="background: #fff;"></textarea>
                 <label class="form-label" for="textAreaExample">Message</label>
               </div>
             </div>
             <div class="float-end mt-2 pt-1">
-              <button type="button" class="btn btn-primary btn-sm">Post comment</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+              <button id="{{blog.dataValues.blog_title}}" type="button" class="btn btn-primary btn-sm commentBtn">Post comment</button>
             </div>
           </div>
             <br><br>
@@ -74,5 +73,6 @@
   </div>
 </section>
 {{/each}}
+<script src="/homePage.js"></script>
 
 
