@@ -1,14 +1,18 @@
 const router = require('express').Router();
 const { user, blog, comment } = require('../../models');
 
-// router.get('/', async (req, res) => {
-//     await blog.findAll({
-//         include: [{model: comment}]
-//     })
-// })
-// .then((data) => {
+router.get('/comment', async (req, res) => {
+await comment.findAll({
+    include: [{model: blog},{model: user}]
+})
+.then((data) => {
+    res.json(data)
+})
+.catch((err)=>{
+    res.json(err)
+})
+});
 
-// })
 router.get('/byTitle/:id', async (req, res) => {
     // put session check in here to redirect to login
     let blog_title = JSON.parse(req.params.id);
@@ -25,7 +29,7 @@ router.get('/byTitle/:id', async (req, res) => {
 });
 
 router.post('/newComment', async (req, res) => {
-    // put session check in here to redirect to login
+    // put session check in here to redirect to login in the homepage handlebars
     console.log(req.body)
     await comment.create({
         user_id: req.session.user.user_id,

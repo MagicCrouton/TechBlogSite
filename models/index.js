@@ -17,6 +17,10 @@ user.hasMany(comment, {
     foreignKey: 'user_id'
 })
 
+comment.belongsTo(user, {
+    foreignKey: 'user_id'
+})
+
 comment.belongsTo(blog, {
     foreignKey: 'blog_id'
 })
