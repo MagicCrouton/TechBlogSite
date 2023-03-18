@@ -1,6 +1,7 @@
 
 const commentHandler = async (event) => {
     event.preventDefault();
+    console.log(event.target.id)
     let blog_id;
     let comment_body;
     let blog_title = JSON.stringify(event.target.id);
