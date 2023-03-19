@@ -70,6 +70,20 @@ router.put('/editBlog', async (req, res) => {
         .catch((err) => res.json(err));
         });
 
+router.delete('/deleteBlog', async (req, res) => {
+    blog.destroy({
+        where: {
+            blog_id: req.body.blog_id
+        }
+    })
+    .then((update)=> {
+        res.json(update);
+    })
+    .catch((err) => {
+        res.json(err)
+    })
+})
+
 router.post('/newComment', async (req, res) => {
     // put session check in here to redirect to login in the homepage handlebars
     console.log(req.body)

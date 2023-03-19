@@ -21,6 +21,27 @@ const blogUpdateHandler = async (event) => {
       })
 }
 
+const blogDeleteHandler = async (event) => {
+    event.preventDefault();
+    // console.log(event.target.dataset.blogid)
+    let blog_id = event.target.dataset.blogid;
+    console.log(blog_id)
+    await fetch('/api/post/deleteBlog', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            blog_id
+        })
+      })
+      .then((response) => response.json())
+      .then((data)=>{
+        console.log(data)
+        location.reload('/api/users/dashboard')
+      })
+}
+
 let editSubmit = document.querySelector('#blogUpdateBtn')
+let deleteSubmit = document.querySelector('#blogDeleteBtn')
 
 editSubmit.addEventListener('click', blogUpdateHandler);
+deleteSubmit.addEventListener('click', blogDeleteHandler);

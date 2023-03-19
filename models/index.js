@@ -18,20 +18,24 @@ user.hasMany(comment, {
 })
 
 comment.belongsTo(user, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 })
 
 comment.belongsTo(blog, {
-    foreignKey: 'blog_id'
+    foreignKey: 'blog_id',
+    onDelete: 'CASCADE'
 })
 
 blog.hasMany(comment, {
-    foreignKey: 'blog_id'
+    foreignKey: 'blog_id',
+    onDelete: 'CASCADE'
 })
 
 // i'm not sure if this will work
 comment.belongsTo(comment, {
-    foreignKey: 'parentComment_id'
+    foreignKey: 'parentComment_id',
+    onDelete: 'CASCADE'
 })
 
 
