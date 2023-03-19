@@ -1,0 +1,29 @@
+
+<section style="background-color: #eee;">
+  <div class="container my-1 py-1">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-start align-items-center">
+              <div>
+                <textarea class="form-control" id="title{{data.dataValues.blog_id}}" rows="1"
+                  style="background: #fff;">{{data.dataValues.blog_title}}</textarea>
+                 <p class="text-muted small mb-0">
+                  {{data.dataValues.user.dataValues.user_name}}
+                </p>               
+                <p class="text-muted small mb-0">
+                  created - {{data.dataValues.createdAt}}
+                </p>
+              </div>
+            </div>
+            <textarea class="form-control" id="body{{data.dataValues.blog_id}}" rows="5"
+                  style="background: #fff;">{{data.dataValues.blog_body}}</textarea>
+            <button id="blogUpdateBtn" data-blogID="{{data.dataValues.blog_id}}" type="button" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/blogUpdate.js"></script>

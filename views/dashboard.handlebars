@@ -3,6 +3,7 @@
 <div class="table-responsive">
   <table class="table table-dark">
     <thead>
+      <tr>Click on a blog title to edit</tr>
       <tr>
         <th scope="col">Blog ID</th>
         <th scope="col">Title</th>
@@ -16,7 +17,7 @@
     {{#each data as |blog|}}
       <tr>
         <th scope="row">{{blog.dataValues.blog_id}}</th>
-        <td>{{blog.dataValues.blog_title}}</td>
+        <td><a href='/api/post/editBlog/{{blog.dataValues.blog_id}}'>{{blog.dataValues.blog_title}}</a></td>
         <td>{{blog.dataValues.createdAt}}</td>
         <td>{{blog.dataValues.updatedAt}}</td>
       </tr>
@@ -54,24 +55,4 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Invoice #184389</h5>
-        <p class="card-text">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
-        <a href="#" class="btn btn-primary">Print</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Invoice #184391</h5>
-        <p class="card-text">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
-        <a href="#" class="btn btn-primary">Print</a>
-      </div>
-    </div>
-  </div>
-</div>
 <script src="/dashboard.js"></script>
