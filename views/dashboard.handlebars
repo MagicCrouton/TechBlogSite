@@ -14,12 +14,42 @@
     <tbody>
         {{!-- iterate through users blogs here --}}
     {{#if loggedIn}}
-    {{#each data as |blog|}}
+    {{#each blogData as |blog|}}
       <tr>
         <th scope="row">{{blog.dataValues.blog_id}}</th>
         <td><a href='/api/post/editBlog/{{blog.dataValues.blog_id}}'>{{blog.dataValues.blog_title}}</a></td>
         <td>{{blog.dataValues.createdAt}}</td>
         <td>{{blog.dataValues.updatedAt}}</td>
+      </tr>
+      {{/each}}
+      {{/if}}
+       {{!-- end iterations --}}
+    </tbody>
+  </table>
+</div>
+
+<h3>Your Comments</h3>
+<hr>
+<div class="table-responsive">
+  <table class="table table-dark">
+    <thead>
+      <tr>Click on a Comment Title to edit</tr>
+      <tr>
+        <th scope="col">Comment ID</th>
+        <th scope="col">Blog Responded to</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Last Updated at</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{!-- iterate through users blogs here --}}
+    {{#if loggedIn}}
+    {{#each commentData as |comment|}}
+      <tr>
+        <th scope="row">{{comment.dataValues.blog_id}}</th>
+        <td><a href='/api/post/editComment/{{comment.dataValues.comment_id}}'>{{comment.dataValues.blog.dataValues.blog_title}}</a></td>
+        <td>{{comment.dataValues.createdAt}}</td>
+        <td>{{comment.dataValues.updatedAt}}</td>
       </tr>
       {{/each}}
       {{/if}}

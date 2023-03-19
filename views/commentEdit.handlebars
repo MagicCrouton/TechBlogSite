@@ -1,0 +1,35 @@
+<section style="background-color: #eee;">
+  <div class="container my-1 py-1">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-start align-items-center">
+              <div>
+                <h2 style="background: #fff;">{{data.dataValues.blog.dataValues.blog_title}}</h2>           
+                <p class="text-muted small mb-0">
+                  created - {{data.dataValues.blog.dataValues.createdAt}}
+                </p>
+              </div>
+            </div>
+            <p style="background: #fff;">{{data.dataValues.blog.dataValues.blog_body}}</p>
+            <br>
+                <p class="text-muted small mb-0">
+                  you commented
+                </p>
+
+                <textarea class="form-control" id="comment{{data.dataValues.comment_id}}" rows="3"
+                  style="background: #fff;">{{data.dataValues.comment_body}}</textarea>
+
+                <p class="text-muted small mb-0">
+                 on {{data.dataValues.createdAt}}
+                </p>
+            <button id="commentUpdateBtn" data-commentID="{{data.dataValues.comment_id}}" type="button" class="btn btn-primary">Update</button>
+            <button id="commentDeleteBtn" data-commentID="{{data.dataValues.comment_id}}" type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/commentUpdate.js"></script>

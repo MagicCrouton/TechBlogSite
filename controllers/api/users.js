@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { user, blog } = require('../../models');
+const { user, blog, comment } = require('../../models');
 const { Op } = require("sequelize");
 
 router.get('/loginPage' , async (req, res) => {
@@ -85,22 +85,34 @@ router.post('/logout', (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
   if (req.session.loggedIn) {
-    await blog.findAll({
+    try {
+    const blogData = await blog.findAll({
       where: {
         user_id: {
           [Op.eq]: req.session.user.user_id
         }
       }
     })
-    .then((data) =>
+
+    const commentData = await comment.findAll({
+      include: [{model: blog}],
+      where: {
+        user_id: {
+          [Op.eq]: req.session.user.user_id
+        }
+      }
+    })
+
     res.render('dashboard', {
-      data,
+      blogData,
+      commentData,
       loggedIn: req.session.loggedIn,
       userName: req.session.user
-    }))
-    .catch((err)=> {
-      res.json(err)
     })
+  }
+    catch(err) {
+      res.json(err)
+    }
   }
   else {
     res.render('login')
