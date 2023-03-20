@@ -12,9 +12,8 @@ const commentUpdateHandler = async (event) => {
         })
       })
       .then((response) => response.json())
-      .then((data)=>{
-        console.log(data)
-        location.reload()
+      .then(()=>{
+        window.location.href = '/api/users/dashboard'
       })
 }
 

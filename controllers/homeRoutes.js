@@ -11,8 +11,7 @@ router.get('/', async (req, res) => {
     ]
   })
   .then((data) => {
-    // let blogData = data[0].dataValues.comment
-    console.log(req.session.loggedIn)
+    // console.log(req.session.loggedIn)
     // res.json(data)
     res.render('homepage', {
       data,

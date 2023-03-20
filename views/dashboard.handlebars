@@ -1,85 +1,114 @@
-<h3>Your Blogs</h3>
-<hr>
-<div class="table-responsive">
-  <table class="table table-dark">
-    <thead>
-      <tr>Click on a blog title to edit</tr>
-      <tr>
-        <th scope="col">Blog ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Created at</th>
-        <th scope="col">Last Updated at</th>
-      </tr>
-    </thead>
-    <tbody>
-        {{!-- iterate through users blogs here --}}
-    {{#if loggedIn}}
-    {{#each blogData as |blog|}}
-      <tr>
-        <th scope="row">{{blog.dataValues.blog_id}}</th>
-        <td><a href='/api/post/editBlog/{{blog.dataValues.blog_id}}'>{{blog.dataValues.blog_title}}</a></td>
-        <td>{{blog.dataValues.createdAt}}</td>
-        <td>{{blog.dataValues.updatedAt}}</td>
-      </tr>
-      {{/each}}
-      {{/if}}
-       {{!-- end iterations --}}
-    </tbody>
-  </table>
-</div>
 
-<h3>Your Comments</h3>
-<hr>
-<div class="table-responsive">
-  <table class="table table-dark">
-    <thead>
-      <tr>Click on a Comment Title to edit</tr>
-      <tr>
-        <th scope="col">Comment ID</th>
-        <th scope="col">Blog Responded to</th>
-        <th scope="col">Created at</th>
-        <th scope="col">Last Updated at</th>
-      </tr>
-    </thead>
-    <tbody>
-        {{!-- iterate through users blogs here --}}
-    {{#if loggedIn}}
-    {{#each commentData as |comment|}}
-      <tr>
-        <th scope="row">{{comment.dataValues.blog_id}}</th>
-        <td><a href='/api/post/editComment/{{comment.dataValues.comment_id}}'>{{comment.dataValues.blog.dataValues.blog_title}}</a></td>
-        <td>{{comment.dataValues.createdAt}}</td>
-        <td>{{comment.dataValues.updatedAt}}</td>
-      </tr>
-      {{/each}}
-      {{/if}}
-       {{!-- end iterations --}}
-    </tbody>
-  </table>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Create New Blog</h5>
-
-            <div class="card-footer py-3 border-3" style="background-color: #f8f9fa;">
-            <div class="d-flex flex-column w-100">
-              <div class="form-outline w-100">
-                <textarea class="form-control" id="newBlogTitle" rows="1"
-                  style="background: #fff;"></textarea>
-                <label class="form-label" for="textAreaExample">title</label>
-              </div>
-              <div class="form-outline w-100">
-                <textarea class="form-control" id="newBlogBody" rows="6"
-                  style="background: #fff;"></textarea>
-                <label class="form-label" for="textAreaExample">body</label>
-              </div>
-            </div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h3>Your Blogs</h3>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+                  <div class="table-responsive">
+            <table class="table table-dark">
+              <thead>
+                <tr>Click on a blog title to edit</tr>
+                <tr>
+                  <th scope="col">Blog ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Created at</th>
+                  <th scope="col">Last Updated at</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {{!-- iterate through users blogs here --}}
+              {{#if loggedIn}}
+              {{#each blogData as |blog|}}
+                <tr>
+                  <th scope="row">{{blog.dataValues.blog_id}}</th>
+                  <td><a href='/api/post/editBlog/{{blog.dataValues.blog_id}}'>{{blog.dataValues.blog_title}}</a></td>
+                  <td>{{blog.dataValues.createdAt}}</td>
+                  <td>{{blog.dataValues.updatedAt}}</td>
+                </tr>
+                {{/each}}
+                {{/if}}
+                {{!-- end iterations --}}
+              </tbody>
+            </table>
           </div>
-        <button class="btn btn-primary" id="postNew">Post</button>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h3>Your Comments</h3>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+              <div class="table-responsive">
+                <table class="table table-dark">
+                  <thead>
+                    <tr>Click on a Comment Title to edit</tr>
+                    <tr>
+                      <th scope="col">Comment ID</th>
+                      <th scope="col">Blog Responded to</th>
+                      <th scope="col">Created at</th>
+                      <th scope="col">Last Updated at</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {{!-- iterate through users blogs here --}}
+                  {{#if loggedIn}}
+                  {{#each commentData as |comment|}}
+                    <tr>
+                      <th scope="row">{{comment.dataValues.blog_id}}</th>
+                      <td><a href='/api/post/editComment/{{comment.dataValues.comment_id}}'>{{comment.dataValues.blog.dataValues.blog_title}}</a></td>
+                      <td>{{comment.dataValues.createdAt}}</td>
+                      <td>{{comment.dataValues.updatedAt}}</td>
+                    </tr>
+                    {{/each}}
+                    {{/if}}
+                    {{!-- end iterations --}}
+                  </tbody>
+                </table>
+              </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <h3>New Blog</h3>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Create New Blog</h5>
+
+                            <div class="card-footer py-3 border-3" style="background-color: #f8f9fa;">
+                            <div class="d-flex flex-column w-100">
+                              <div class="form-outline w-100">
+                                <textarea class="form-control" id="newBlogTitle" rows="1"
+                                  style="background: #fff;"></textarea>
+                                <label class="form-label" for="textAreaExample">title</label>
+                              </div>
+                              <div class="form-outline w-100">
+                                <textarea class="form-control" id="newBlogBody" rows="6"
+                                  style="background: #fff;"></textarea>
+                                <label class="form-label" for="textAreaExample">body</label>
+                              </div>
+                            </div>
+                          </div>
+                        <button class="btn btn-primary" id="postNew">Post</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       </div>
     </div>
   </div>

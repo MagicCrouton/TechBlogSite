@@ -16,8 +16,7 @@ const blogUpdateHandler = async (event) => {
       })
       .then((response) => response.json())
       .then((data)=>{
-        console.log(data)
-        location.reload()
+        window.location.href = '/api/users/dashboard'
       })
 }
 
