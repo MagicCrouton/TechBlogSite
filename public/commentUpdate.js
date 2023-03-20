@@ -31,7 +31,7 @@ const commentDeleteHandler = async (event) => {
       })
       .then((response) => response.json())
       .then((data)=>{
-        location.reload('/api/users/dashboard')
+        window.location.href = '/api/users/dashboard'
       })
 }
 

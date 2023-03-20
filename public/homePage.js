@@ -1,20 +1,9 @@
 
 const commentHandler = async (event) => {
     event.preventDefault();
-    console.log(event.target.id)
-    let blog_id;
-    let comment_body;
-    let blog_title = JSON.stringify(event.target.id);
-    await fetch(`/api/post/byTitle/${blog_title}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        blog_id = data.blog_id
-        comment_body = document.querySelector(`#textArea${blog_id}`).value
-        console.log(blog_id, comment_body)
-      })
+    console.log(event.target)
+    let blog_id = event.target.dataset.blogid
+    let comment_body = document.querySelector(`#textArea${blog_id}`).value
     
     await fetch('/api/post/newComment', {
         method: 'POST',
@@ -23,7 +12,7 @@ const commentHandler = async (event) => {
       })
       .then((response) => response.json())
       .then((data)=>{
-        console.log(data)
+        window.location.reload()
       })
 }
 

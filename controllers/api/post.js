@@ -17,6 +17,28 @@ router.get('/byTitle/:id', async (req, res) => {
     })
 });
 
+router.get('/:id', async (req, res) => {
+    let blog_id = JSON.parse(req.params.id);
+    await blog.findOne({
+        where: {blog_id: `${blog_id}`},
+        include: [
+            {model: user},
+            {model: comment, include: [{model: user}]}
+          ]
+    })
+    .then((data) => {
+        console.log(data)
+        res.render('singleBlogView',{
+            data,
+            loggedIn: req.session.loggedIn,
+            userName: req.session.user          
+        })
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
+});
+
 // routes to create and edit blogs
 
 router.post('/newBlog', async (req, res) => {
@@ -107,7 +129,7 @@ router.get('/editComment/:id', async (req, res) => {
         res.render('commentEdit', {
             data,
             loggedIn: req.session.loggedIn,
-            userName: req.session.loggedIn
+            userName: req.session.user
         })
     })
     .catch((err)=>{

@@ -36,7 +36,7 @@ const blogDeleteHandler = async (event) => {
       .then((response) => response.json())
       .then((data)=>{
         console.log(data)
-        location.reload('/api/users/dashboard')
+        window.location.href = '/api/users/dashboard'
       })
 }
 

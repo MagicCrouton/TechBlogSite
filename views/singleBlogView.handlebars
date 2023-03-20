@@ -1,4 +1,4 @@
-{{#each data}}
+
 <section style="background-color: #eee;">
   <div class="container my-1 py-1">
     <div class="row d-flex justify-content-center">
@@ -7,18 +7,18 @@
           <div class="card-body">
             <div class="d-flex flex-start align-items-center">
               <div>
-                <h6 class="fw-bold text-primary mb-1"> <a href="/api/post/{{this.dataValues.blog_id}}">{{this.dataValues.blog_title}}</a> </h6>
+                <h6 class="fw-bold text-primary mb-1"> <a href="/api/post/{{data.dataValues.blog_id}}">{{data.dataValues.blog_title}}</a> </h6>
                  <p class="text-muted small mb-0">
-                  {{this.dataValues.user.dataValues.user_name}}
+                  {{data.dataValues.user.dataValues.user_name}}
                 </p>               
                 <p class="text-muted small mb-0">
-                  created - {{this.dataValues.createdAt}}
+                  created - {{data.dataValues.createdAt}}
                 </p>
               </div>
             </div>
 
             <p class="mt-3 mb-4 pb-2">
-              {{this.dataValues.blog_body}}
+              {{data.dataValues.blog_body}}
             </p>
           </div>
 
@@ -33,18 +33,37 @@
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                   <div class="d-flex flex-start p-3">
                       <div class="flex-grow-1 flex-shrink-1">
+{{!-- comment box section  --}}
+
+          <div class="card-footer py-3 border-3" style="background-color: #f8f9fa;">
+            <div class="d-flex flex-start w-100">
+              <div class="form-outline w-100">
+                <textarea class="form-control" id="textArea{{data.dataValues.blog_id}}" rows="1"
+                  style="background: #fff;"></textarea>
+                <label class="form-label" for="textAreaExample">Message</label>
+              </div>
+            </div>
+            <div class="float-end mt-2 pt-1">
+              {{#if loggedIn}}
+              <button data-blogid="{{data.dataValues.blog_id}}" id="{{data.dataValues.blog_title}}" type="button" class="btn btn-primary btn-sm commentBtn">Post comment</button>
+              {{else}}
+              <a href="/api/users/loginPage" class="btn btn-primary btn-sm" >Post comment</a>
+              {{/if}}
+            </div>
+          </div>
+            <br>
 {{!-- previous comment section --}}
-      {{#each comments}}
+      {{#each data.comments}}
                         <div>
                           <div class="d-flex justify-content-between align-items-center">
                             <p class="mb-1">
-                              {{this.dataValues.user.dataValues.user_name}}
+                              {{this.dataValues.user.dataValues.user_name}} commented 
                             </p>
                           </div>
                           <p class="small mb-0">
-                            commented "{{this.dataValues.comment_body}}"
+                            "{{this.dataValues.comment_body}}"
                           </p>
-                          <span class="small">on - {{this.dataValues.createdAt}}</span>
+                          <span class="small"> on - {{this.dataValues.createdAt}}</span>
                         </div>
                         <br>
       {{/each}}
@@ -59,7 +78,4 @@
     </div>
   </div>
 </section>
-{{/each}}
 <script src="/homePage.js"></script>
-
-
